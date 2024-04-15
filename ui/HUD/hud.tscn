@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3178j04cudei"]
+
+[ext_resource type="Texture2D" uid="uid://s6qu83a5uh1d" path="res://assets/Main Ship - Base - Full health.png" id="1_f4jj2"]
+[ext_resource type="Script" path="res://ui/HUD/hud.gd" id="1_tosyr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8kpr"]
+atlas = ExtResource("1_f4jj2")
+region = Rect2(9, 10, 30, 28)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_tosyr")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="live_bar" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/live_bar"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = SubResource("AtlasTexture_h8kpr")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/live_bar"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = SubResource("AtlasTexture_h8kpr")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/live_bar"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = SubResource("AtlasTexture_h8kpr")
+expand_mode = 1
+stretch_mode = 4

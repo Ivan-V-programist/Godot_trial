@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://bhiyimq5rlrrc"]
+
+[ext_resource type="Texture2D" uid="uid://cv2p71pivm5fa" path="res://elements/enemy_bullet/Kla'ed - Torpedo.png" id="1_rbpg1"]
+[ext_resource type="Script" path="res://elements/enemy_bullet/enemy_bullet.gd" id="1_xdycm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvscm"]
+atlas = ExtResource("1_rbpg1")
+region = Rect2(0, 0, 11, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rehbe"]
+atlas = ExtResource("1_rbpg1")
+region = Rect2(11, 0, 11, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2exv"]
+atlas = ExtResource("1_rbpg1")
+region = Rect2(22, 0, 11, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l6xj0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvscm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rehbe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2exv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1flqc"]
+radius = 3.0
+height = 22.0
+
+[node name="enemy_bullet" type="CharacterBody2D"]
+top_level = true
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_xdycm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 3.13129
+sprite_frames = SubResource("SpriteFrames_l6xj0")
+frame_progress = 0.657438
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_1flqc")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0.5, 5)
+scale = Vector2(0.35, 1)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

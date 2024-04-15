@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7mxyp7jjiigm"]
+
+[ext_resource type="Script" path="res://elements/enemy/enemy.gd" id="1_beruk"]
+[ext_resource type="Texture2D" uid="uid://q3bek8a21rbu" path="res://assets/enemy.png" id="1_v20kg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rbn1p"]
+size = Vector2(24, 22)
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_beruk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_v20kg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rbn1p")
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-15, 0)
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(15, 0)
